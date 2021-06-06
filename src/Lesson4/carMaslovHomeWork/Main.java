@@ -101,7 +101,7 @@ public class Main {
                     if (newCar.getCarIsOn()) {
                         System.out.println("----------------------------------------->>Автомобиль уже заведен!");
                     } else if (newFuelTank.getCurrentFuelVolume() == 0) {
-                        System.out.println("----------------------------------------->>Недостаточно топлива для поездки!");
+                        System.out.println("----------------------------------------->>Топливный бак пуст!");
                     } else newCar.startTheCar();
                 } else if (inputInt == 7) {
                     if (newCar.getCarIsOn()) {
