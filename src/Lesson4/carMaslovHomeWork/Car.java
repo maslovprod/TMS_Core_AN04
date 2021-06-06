@@ -6,10 +6,14 @@ public class Car {
     private int distanceCovered;
     private boolean carIsOn;
     private int consumptionPer100km;
+    private Engine engine;
+    private FuelTank fuelTank;
 
-    public Car(){
+    public Car(Engine engine, FuelTank fuelTank){
        this.distanceCovered = 0;
        this.consumptionPer100km = 10;
+       this.engine = engine;
+       this.fuelTank = fuelTank;
     }
 
     public void setCarModel(String carModel) {
@@ -44,14 +48,14 @@ public class Car {
         return carIsOn;
     }
 
-    public void startTheCar(Engine newEngine){
-        newEngine.startEngine();
+    public void startTheCar(){
+        this.engine.startEngine();
         this.carIsOn = true;
         System.out.println("----------------------------------------->>Автомобиль заведен!");
     }
 
-    public void stopTheCar(Engine newEngine){
-        newEngine.stopEngine();
+    public void stopTheCar(){
+        this.engine.stopEngine();
         this.carIsOn = false;
         System.out.println("----------------------------------------->>Автомобиль заглушен!");
     }
@@ -62,28 +66,21 @@ public class Car {
         System.out.println("----------------------------------------->>Пройдена дистанция: 100км");
     }
 
-    //так оказывается не работает
-//    @Override
-//    public String toString(Engine newEngine, FuelTank newFuelTank) {
-//        return "Текущий автомобиль:" + "\n" +
-//                "Модель = '" + carModel + '\'' + "\n" +
-//                "Год выпуска = " + yearOfProd + "\n" +
-//                "Тип двигателя = '" + newEngine.getEngineType() + '\'' + "\n" +
-//                "Объем топливного бака = " + newFuelTank.getTankSize() + "\n" +
-//                "Текущий объем топлива в баке = " + newFuelTank.getCurrentFuelVolume() + "\n" +
-//                "Расход на 100 км = " + consumptionPer100km + "л" + "\n" +
-//                "Пройденная дистанция = " + distanceCovered + "км" + "\n";
-//    }
-
-        @Override
+    @Override
     public String toString() {
         return "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + "\n" +
                 "Текущий автомобиль:" + "\n" +
                 "Модель = '" + carModel + '\'' + "\n" +
                 "Год выпуска = " + yearOfProd + "\n" +
+                "Тип двигателя = '" + engine.toString() + '\'' + "\n" +
+                "Объем топливного бака = " + fuelTank.toString() + "\n" +
+                "Текущий объем топлива в баке = " + fuelTank.getCurrentFuelVolume() + "\n" +
                 "Расход на 100 км = " + consumptionPer100km + "л" + "\n" +
-                "Пройденная дистанция = " + distanceCovered + "км" + "\n";
+                "Пройденная дистанция = " + distanceCovered + "км" + "\n" +
+                "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
     }
+
+
 
 
 }

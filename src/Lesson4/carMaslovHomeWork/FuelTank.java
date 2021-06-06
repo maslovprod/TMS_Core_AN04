@@ -30,4 +30,8 @@ public class FuelTank {
         return currentFuelVolume;
     }
 
+    @Override
+    public String toString() {
+        return "" + tankSize;
+    }
 }

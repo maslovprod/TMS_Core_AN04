@@ -15,10 +15,9 @@ public class Main {
         boolean fuelTankWasCreated = false;
         String fuelTankWasCreatedOK = "";
 
-        Car newCar = new Car();
-        FuelTank newFuelTank = new FuelTank();
-        Engine newEngine = new Engine();
-
+        FuelTank newFuelTank = null;
+        Engine newEngine = null;
+        Car newCar = null;
 
         while (play) {
             while (!carWasCreated) {
@@ -47,7 +46,7 @@ public class Main {
                     fuelTankWasCreatedOK = "[OK]";
                 }
                 if (engineWasCreated && fuelTankWasCreated) {
-                    newCar = new Car();
+                    newCar = new Car(newEngine, newFuelTank);
                     carWasCreated = true;
                     System.out.println("----------------------------------------->>Создана новая машина");
                 }
@@ -68,7 +67,6 @@ public class Main {
                 System.out.println("Введите команду:");
                 inputInt = in.nextInt();
                 if (inputInt == 1) {
-                    newCar = new Car();
                     carWasCreated = false;
                     engineWasCreated = false;
                     fuelTankWasCreated = false;
@@ -93,7 +91,7 @@ public class Main {
                     while (currentFuelVolume != newFuelTank.getTankSize()) {
                         System.out.print("+");
                         currentFuelVolume++;
-                        TimeUnit.MILLISECONDS.sleep(100);
+                        TimeUnit.MILLISECONDS.sleep(35);
                     }
                     newFuelTank.setCurrentFuelVolume(currentFuelVolume);
                     System.out.println("");
@@ -104,10 +102,10 @@ public class Main {
                         System.out.println("----------------------------------------->>Автомобиль уже заведен!");
                     } else if (newFuelTank.getCurrentFuelVolume() == 0) {
                         System.out.println("----------------------------------------->>Недостаточно топлива для поездки!");
-                    } else newCar.startTheCar(newEngine);
+                    } else newCar.startTheCar();
                 } else if (inputInt == 7) {
                     if (newCar.getCarIsOn()) {
-                        newCar.stopTheCar(newEngine);
+                        newCar.stopTheCar();
                     } else System.out.println("----------------------------------------->>Автомобиль уже заглушен!");
 
                 } else if (inputInt == 8) {
@@ -121,20 +119,15 @@ public class Main {
                         while (distance <= 100) {
                             System.out.print(".");
                             distance++;
-                            TimeUnit.MILLISECONDS.sleep(100);
+                            TimeUnit.MILLISECONDS.sleep(35);
                         }
                         System.out.println("");
                         newCar.drive100km(newFuelTank);
                     }
                 } else if (inputInt == 9) {
-  //              System.out.println(newCar.toString(newEngine, newFuelTank));   //так оказывается не работает
-                  System.out.println(newCar.toString());
-                    System.out.println("Тип двигателя: " + newEngine.getEngineType());
-                    System.out.println("Объем топливного бака: " + newFuelTank.getTankSize());
-                    System.out.println("Текущий запас топлива: " + newFuelTank.getCurrentFuelVolume());
-                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    System.out.println(newCar.toString());
                 } else if (inputInt == 0) {
-                    System. exit(0);
+                    System.exit(0);
                     in.close();
                 }
             }

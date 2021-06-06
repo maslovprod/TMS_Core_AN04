@@ -24,4 +24,9 @@ public class Engine {
         this.engineIsOn = false;
         System.out.println("----------------------------------------->>Двигатель выключен!");
     }
+
+    @Override
+    public String toString() {
+        return "" + engineType;
+    }
 }
