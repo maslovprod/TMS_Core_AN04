@@ -44,7 +44,7 @@ public class Main {
                     newFuelTank.setTankSize(inputInt);
                     fuelTankWasCreated = true;
                     fuelTankWasCreatedOK = "[OK]";
-                }
+                }else System.out.println("----------------------------------------->>Некорректная команда!");
                 if (engineWasCreated && fuelTankWasCreated) {
                     newCar = new Car(newEngine, newFuelTank);
                     carWasCreated = true;

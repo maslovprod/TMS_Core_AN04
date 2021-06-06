@@ -24,6 +24,14 @@ public class Car {
         this.yearOfProd = yearOfProd;
     }
 
+    public void setFuelTank(FuelTank fuelTank) {
+        this.fuelTank = fuelTank;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
     public void setDistanceCovered(int distanceCovered) {
         this.distanceCovered = distanceCovered;
     }
